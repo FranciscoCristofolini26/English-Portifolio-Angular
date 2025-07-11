@@ -1,0 +1,24 @@
+/* Reset básico */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo do header */
+header {
+    background-color: #ffffff;
+    padding: 50px 0; /* padding vertical, sem espaço lateral */
+    border: 2px groove #00000096;
+    height: 15vh;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do título */
+h1#main-title {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin: 0; /* Removendo o espaço que causava o “respiro” interno */
+}
