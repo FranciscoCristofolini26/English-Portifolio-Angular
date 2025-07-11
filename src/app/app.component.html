@@ -1,21 +1,11 @@
-<!-- Header fixo no topo -->
+<!-- Header fixo, se desejar -->
 <app-header></app-header>
 
-<!-- Container do conteúdo -->
-<div class="container" style="padding: 20px;">
-  <h2>Selecione um dia de aula:</h2>
+<!-- Menu hamburguer -->
+<app-menu (diaSelecionado)="trocarComponente($event)"></app-menu>
 
-  <!-- Input + datalist -->
-  <input list="days" [(ngModel)]="selectedDay" (change)="onDayChange()" placeholder="Ex: Day 01">
-
-  <datalist id="days">
-    <option *ngFor="let day of days" [value]="day.label"></option>
-  </datalist>
-
-  <!-- Área de conteúdo do dia selecionado -->
-  <ng-container [ngSwitch]="selectedDay">
-    <app-day01 *ngSwitchCase="'Day 01'"></app-day01>
-    <app-day02 *ngSwitchCase="'Day 02'"></app-day02>
-    <p *ngSwitchDefault>Selecione um dia válido acima.</p>
-  </ng-container>
+<!-- Conteúdo exibido dinamicamente -->
+<div class="conteudo">
+  <app-day01 *ngIf="diaSelecionado === 'day01'"></app-day01>
+  <app-day02 *ngIf="diaSelecionado === 'day02'"></app-day02>
 </div>

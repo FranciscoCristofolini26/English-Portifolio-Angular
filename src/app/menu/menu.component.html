@@ -1,0 +1,12 @@
+<!-- Botão hambúrguer -->
+<div class="hamburger" (click)="toggleMenu()">
+  &#9776;
+</div>
+
+<!-- Menu (exibido condicionalmente) -->
+<nav [class.open]="isMenuOpen">
+  <ul>
+    <li><a (click)="selecionarDia('day01')">Dia 01</a></li>
+    <li><a (click)="selecionarDia('day02')">Dia 02</a></li>
+  </ul>
+</nav>
