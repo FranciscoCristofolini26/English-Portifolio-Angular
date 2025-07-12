@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-day03',
   imports: [],
   templateUrl: './day03.component.html',
-  styleUrl: './day03.component.css'
+  styleUrls: ['./day03.component.css'] // Corrigido aqui
 })
 export class Day03Component {
 
