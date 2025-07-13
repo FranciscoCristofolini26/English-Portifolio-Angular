@@ -4,3 +4,6 @@ import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent)
   .catch(err => console.error(err));
+
+
+//Teste commit ubuntu
