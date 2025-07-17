@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -12,13 +12,9 @@ export class MenuComponent {
   @Output() diaSelecionado = new EventEmitter<string>();
 
   selecionarDia(dia: string) {
-    this.diaSelecionado.emit(dia); // envia para o app.component
+    this.diaSelecionado.emit(dia);
   }
 
-  isMenuOpen = false;
-
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
+  @Input() isOpen = false;
 
  }
