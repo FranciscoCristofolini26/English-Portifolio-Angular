@@ -9,6 +9,7 @@ div#day01 {
     
 }
 
+
 div#day01 > h1 {
     color: #333;
     font-size: 40px;
@@ -36,6 +37,7 @@ div#day01 > p {
 }
 
 div#lingua-franca {
+    
     background-color: #d6f2ff;
     padding: 20px;
     border-radius: 10px;
@@ -43,6 +45,7 @@ div#lingua-franca {
     width: 50%;
     margin: auto;
     box-shadow: black 0.5px 0.5px 1px;
+    
 }
 
 div#lingua-franca > p {
@@ -53,4 +56,12 @@ div#lingua-franca > p {
     text-align: center;
     max-width: 75%;
     font-family: cursive;
+}
+
+img {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
