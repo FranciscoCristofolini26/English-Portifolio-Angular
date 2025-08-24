@@ -5,6 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "postbuild": "copy dist\\projeto-new\\browser\\index.html dist\\projeto-new\\browser\\404.html",
+    "deploy": "npx angular-cli-ghpages --dir=dist/projeto-new/browser --base-href=/English-Portifolio-Angular/",
+
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
