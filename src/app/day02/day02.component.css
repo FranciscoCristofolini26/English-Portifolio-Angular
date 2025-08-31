@@ -1,44 +1,80 @@
-div#day02 {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
-    width: 75%;
-    margin: 20px auto;
-    
+/* day02.component.css */
+
+/* Container principal */
+.day2-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(16px, 2.5vw, 28px);
+  margin: 0 auto;
+  max-width: 900px;
 }
 
-
-div#day02 > h1 {
-    color: #333;
-    font-size: 40px;
-    margin-bottom: 10px;
-    text-align: center;
-    
+/* Cabeçalho da aula */
+.day2-hero {
+  text-align: center;
+  margin-bottom: 24px;
 }
 
-div#day02 > h2 {
-    color: #555;
-    font-size: 30px;
-    margin: 25px;
-    text-align: center;
-    
+.day2-hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.8rem, 1.6rem + 1.2vw, 2.4rem);
+  margin: 0 0 .4rem;
 }
 
-div#day02 > p {
-    color: #666;
-    font-size: 18px;
-    line-height: 1.6;
-    margin: 15px auto;
-    text-align: center;
-    max-width: 75%;
-    
+.day2-hero h2 {
+  font-size: clamp(1.2rem, 1.1rem + .8vw, 1.6rem);
+  color: var(--muted);
+  font-weight: 500;
+  margin: 0 0 1.2rem;
 }
 
-iframe {
-    display: block;
-    margin: 20px auto;
-    max-width: 100%;
-    border: none;
+/* Texto */
+.day2-text {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  text-align: justify;
+}
+
+/* Imagem */
+.day2-img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin: 18px auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.day2-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+}
+
+/* Legenda da imagem */
+.day2-caption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+/* Vídeo responsivo */
+.day2-video {
+  position: relative;
+  padding-bottom: 56.25%; /* proporção 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.day2-video iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
+  border-radius: 12px;
 }
