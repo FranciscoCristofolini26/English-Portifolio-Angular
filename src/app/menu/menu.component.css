@@ -1,46 +1,154 @@
-/* Ícone do botão */
+/* ===========================
+   Botão hambúrguer (fixo)
+=========================== */
 .hamburger {
-  font-size: 30px;
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1001;                 /* acima do menu e do scrim */
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 10px;
+  background: transparent;
   cursor: pointer;
   user-select: none;
-  padding: 10px;
-  z-index: 999;
-  position: fixed;
-  top: 10px;
-  left: 10px;    
+  transition: background .2s ease, transform .12s ease, border-color .2s ease;
+  color: inherit;                 /* usa a cor de texto atual */
+  font-size: 0;                   /* ocultar o caractere &#9776; se existir */
 }
 
-/* Estilo do menu */
+/* 3 barrinhas do ícone */
+.hamburger::before,
+.hamburger::after,
+.hamburger span {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform .2s ease, opacity .2s ease;
+}
+.hamburger span { margin: 5px 0; }
+
+.hamburger:hover {
+  background: rgba(0,0,0,.04);
+  transform: translateY(-1px);
+}
+.hamburger:active { transform: scale(.98); }
+.hamburger:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(37,99,235,.25); }
+
+/* estado de "menu aberto" → anima em X
+   (adicione .is-open no botão quando abrir o menu) */
+.hamburger.is-open::before {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.is-open span {
+  opacity: 0;
+}
+.hamburger.is-open::after {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===========================
+   Menu lateral (nav)
+=========================== */
 nav {
   position: fixed;
   top: 0;
-  left: 0;               
-  width: 200px;
-  background-color: #333;
-  color: white;
-  transform: translateX(-100%); 
-  transition: transform 0.3s ease-in-out;
+  left: 0;
+  z-index: 1000;                 /* abaixo do botão */
+  width: 86%;
+  max-width: 300px;
   height: 100vh;
-  padding-top: 60px;
-  z-index: 998;          
+  background: var(--surface, #fff);
+  color: var(--text, #1f2937);
+  border-right: 1px solid rgba(0,0,0,.12);
+  box-shadow: 40px 0 60px rgba(2,8,23,.25);
+  transform: translateX(-100%);
+  transition: transform .25s ease;
+  padding-top: 64px;             /* espaço para respirar abaixo do header */
 }
 
+nav.open { transform: translateX(0); }
 
-nav.open {
-  transform: translateX(0);
+/* Cabeçalho opcional dentro do menu */
+nav .menu-header{
+  padding: 18px 16px 12px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(0,0,0,.08);
 }
 
+/* Lista */
 nav ul {
   list-style: none;
-  padding: 0;
+  padding: 10px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow: auto;
+  height: calc(100vh - 64px - 60px); /* ajusta se usar .menu-header */
 }
 
-nav ul li {
-  padding: 15px;
-  text-align: center;
-}
+nav ul li { padding: 0; }
 
-nav ul li a {
-  color: white;
+nav ul li a,
+nav .menu-item {                /* se usar <button class="menu-item"> */
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: inherit;
+  font: 600 0.95rem/1 Inter, system-ui, sans-serif;
   text-decoration: none;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .06s ease;
+}
+nav ul li a:hover,
+nav .menu-item:hover {
+  background: color-mix(in oklab, var(--primary-weak, #e8eefc), transparent 30%);
+  border-color: color-mix(in oklab, var(--primary, #2563eb), transparent 70%);
+  transform: translateY(-1px);
+}
+nav ul li a:active,
+nav .menu-item:active { transform: translateY(0); }
+
+/* ===========================
+   Scrim (overlay para fechar clicando fora)
+   -> use <div class="scrim" *ngIf="isMenuOpen" (click)="toggleMenu()"></div>
+=========================== */
+.scrim{
+  position: fixed; inset: 0;
+  z-index: 999;                  /* abaixo do botão, acima do conteúdo */
+  background: rgba(2,8,23,.35);
+  backdrop-filter: blur(1px);
+}
+
+/* ===========================
+   Responsivo
+=========================== */
+/* Desktop: esconder hambúrguer; (opcional) manter o nav como drawer */
+@media (min-width: 768px){
+  .hamburger { display: none; }
+}
+
+/* Tema escuro – mantém contraste */
+@media (prefers-color-scheme: dark){
+  .hamburger { border-color: rgba(255,255,255,.16); }
+  nav{
+    background: var(--surface, #0f172a);
+    color: var(--text, #e5e7eb);
+    border-right-color: rgba(255,255,255,.12);
+    box-shadow: 40px 0 60px rgba(0,0,0,.5);
+  }
+  nav .menu-header{ border-bottom-color: rgba(255,255,255,.08); }
 }

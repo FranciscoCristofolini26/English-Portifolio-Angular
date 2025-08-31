@@ -1,38 +1,93 @@
-div#day04 {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
-    width: 75%;
-    margin: 20px auto;
-    
+/* ===== Fundo (mesma linguagem dos outros dias) ===== */
+:host{
+  display:block;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 16px 16px,
+      color-mix(in oklab, var(--text), transparent 96%) 1px,
+      transparent 1px) 0 0 / 24px 24px,
+    var(--surface);
+  padding: 40px 16px;
 }
 
-
-div#day04 > h1 {
-    color: #333;
-    font-size: 40px;
-    margin-bottom: 10px;
-    text-align: center;
-    
+/* ===== Card ===== */
+.day4-card{
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in oklab, var(--text), transparent 88%);
+  box-shadow: 0 10px 30px rgba(2,8,23,.06),
+              inset 0 1px 0 color-mix(in oklab, #fff, transparent 85%);
+  padding: clamp(16px, 2.5vw, 28px);
+  margin: 0 auto;
+  max-width: 900px;
 }
 
-div#day04 > h2 {
-    color: #555;
-    font-size: 30px;
-    margin: 25px;
-    text-align: center;
-    
+/* ===== Cabeçalho ===== */
+.day4-hero{ text-align:center; margin-bottom:24px; }
+.day4-hero h1{
+  font-family:"Playfair Display", serif;
+  font-size: clamp(1.8rem, 1.6rem + 1.2vw, 2.4rem);
+  margin: 0 0 .4rem;
+}
+.day4-hero h2{
+  font-size: clamp(1.2rem, 1.1rem + .8vw, 1.6rem);
+  color: var(--muted);
+  font-weight: 500;
+  margin: 0 0 1.2rem;
 }
 
-div#day04 > p {
-    color: #666;
-    font-size: 18px;
-    line-height: 1.6;
-    margin: 15px auto;
-    text-align: center;
-    max-width: 75%;
-    
+/* ===== Texto ===== */
+.day4-text{
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  text-align: justify;
 }
 
+/* ===== Callout ===== */
+.day4-callout{
+  margin: 12px 0 20px;
+  padding: clamp(12px, 2vw, 16px);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fff7e0, #fff2c7);
+  border: 1px solid color-mix(in oklab, #f59e0b 40%, transparent);
+  color: #7c4a00;
+}
+
+/* ===== Galeria (opcional) ===== */
+.day4-gallery{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 8px;
+}
+.day4-photo{
+  margin: 0;
+  background: var(--surface);
+  border-radius: 12px;
+  border: 1px solid color-mix(in oklab, var(--text), transparent 90%);
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(2,8,23,.08);
+}
+.day4-photo img{
+  width:100%; height:auto; display:block;
+}
+.day4-photo figcaption{
+  padding: 8px 10px;
+  font-size: .9rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ===== Dark mode ===== */
+@media (prefers-color-scheme: dark){
+  :host{
+    background:
+      radial-gradient(circle at 16px 16px,
+        color-mix(in oklab, var(--text), transparent 94%) 1px,
+        transparent 1px) 0 0 / 24px 24px,
+      var(--surface);
+  }
+  .day4-photo{ box-shadow: 0 8px 26px rgba(0,0,0,.45); }
+}

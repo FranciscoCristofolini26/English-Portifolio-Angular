@@ -1,36 +1,48 @@
-/* day02.component.css */
+/* ===== Página (bg igual ao card, com micro-textura) ===== */
+:host{
+  display:block;
+  min-height:100vh;
+  background:
+    /* micro pattern super sutil */
+    radial-gradient(circle at 16px 16px,
+      color-mix(in oklab, var(--text), transparent 96%) 1px,
+      transparent 1px) 0 0 / 24px 24px,
+    var(--surface);
+  padding: 40px 16px;
+}
 
-/* Container principal */
-.day2-card {
+/* ===== Card com contraste elegante (hairline + sombra + inset ring) ===== */
+.day2-card{
   background: var(--surface);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  /* hairline border quase invisível, cria separação do fundo */
+  border: 1px solid color-mix(in oklab, var(--text), transparent 88%);
+  /* elevação suave */
+  box-shadow:
+    0 10px 30px rgba(2, 8, 23, .06),
+    /* anel interno para “recorte” de papel */
+    inset 0 1px 0 color-mix(in oklab, #fff, transparent 85%);
   padding: clamp(16px, 2.5vw, 28px);
   margin: 0 auto;
   max-width: 900px;
 }
 
-/* Cabeçalho da aula */
-.day2-hero {
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-.day2-hero h1 {
-  font-family: "Playfair Display", serif;
+/* ===== Cabeçalho ===== */
+.day2-hero{ text-align:center; margin-bottom:24px; }
+.day2-hero h1{
+  font-family:"Playfair Display", serif;
   font-size: clamp(1.8rem, 1.6rem + 1.2vw, 2.4rem);
   margin: 0 0 .4rem;
 }
-
-.day2-hero h2 {
+.day2-hero h2{
   font-size: clamp(1.2rem, 1.1rem + .8vw, 1.6rem);
   color: var(--muted);
   font-weight: 500;
   margin: 0 0 1.2rem;
 }
 
-/* Texto */
-.day2-text {
+/* ===== Texto ===== */
+.day2-text{
   color: var(--text);
   font-size: 1rem;
   line-height: 1.6;
@@ -38,43 +50,45 @@
   text-align: justify;
 }
 
-/* Imagem */
-.day2-img {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  display: block;
-  margin: 18px auto;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+/* ===== Imagem ===== */
+.day2-img{
+  width:100%; max-width:600px; height:auto; display:block;
+  margin:18px auto; border-radius:12px;
+  box-shadow: 0 6px 20px rgba(2,8,23,.12);
   transition: transform .25s ease, box-shadow .25s ease;
 }
-.day2-img:hover {
+.day2-img:hover{
   transform: scale(1.02);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 12px 30px rgba(2,8,23,.18);
 }
 
-/* Legenda da imagem */
-.day2-caption {
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--muted);
-  margin-bottom: 20px;
+/* ===== Legenda ===== */
+.day2-caption{
+  text-align:center; font-size:.9rem;
+  color: var(--muted); margin-bottom:20px;
 }
 
-/* Vídeo responsivo */
-.day2-video {
-  position: relative;
-  padding-bottom: 56.25%; /* proporção 16:9 */
-  height: 0;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
+/* ===== Vídeo responsivo ===== */
+.day2-video{
+  position:relative; padding-bottom:56.25%; height:0; overflow:hidden;
+  border-radius:12px;
+  border: 1px solid color-mix(in oklab, var(--text), transparent 88%);
+  box-shadow: 0 10px 30px rgba(2,8,23,.06),
+              inset 0 1px 0 color-mix(in oklab, #fff, transparent 85%);
 }
-.day2-video iframe {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  border: 0;
-  border-radius: 12px;
+.day2-video iframe{
+  position:absolute; inset:0; width:100%; height:100%;
+  border:0; border-radius:12px;
+}
+
+/* ===== Ajustes para modo escuro (mantém contraste) ===== */
+@media (prefers-color-scheme: dark){
+  :host{
+    background:
+      radial-gradient(circle at 16px 16px,
+        color-mix(in oklab, var(--text), transparent 94%) 1px,
+        transparent 1px) 0 0 / 24px 24px,
+      var(--surface);
+  }
+  .day2-img{ box-shadow: 0 8px 26px rgba(0,0,0,.45); }
 }

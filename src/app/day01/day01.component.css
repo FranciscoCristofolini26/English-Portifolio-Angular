@@ -1,30 +1,37 @@
-/* day01.component.css */
-
-/* Imagem principal da aula 01 */
-.day01-img {
-  width: 80vh;                /* ocupa a largura do card */
-  height: auto;               /* mantém proporção */
-  border-radius: 12px;        /* cantos arredondados */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* sombra suave */
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  margin: auto;
-  display: block;
-}
-
-/* Efeito hover só nesta aula */
-.day01-img:hover {
-  transform: scale(1.02);     /* zoom suave */
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
-}
-
-/* Legenda específica da aula 01 */
-.day01-caption {
-  margin-top: 8px;
-  font-size: 0.9rem;
-  color: #6b7280; /* cor neutra */
+/* Container da figura (centraliza e dá respiro) */
+.day01-figure {
+  margin: 18px auto;
   text-align: center;
 }
 
+/* Imagem responsiva */
+.day01-img {
+  width: 100%;                        /* ocupa toda a largura disponível */
+  max-width: clamp(320px, 90vw, 720px); /* limita no desktop, expande no mobile */
+  height: auto;                        /* mantém proporção */
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Hover sutil */
+.day01-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+}
+
+/* Legenda */
+.day01-caption,
 figcaption {
-    text-align: center;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* opcional: se quiser um limite específico em telas muito grandes */
+@media (min-width: 1200px) {
+  .day01-img { max-width: 800px; }
 }
